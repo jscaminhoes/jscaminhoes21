@@ -6,6 +6,7 @@ import { EmailIcon, PhoneIcon } from '@chakra-ui/icons';
 import Navigator from '../components/Navigator';
 import { getAllCaminhoes } from '../lib/dato-cms';
 import Card from '../components/Card';
+import Footer from '../components/Footer';
 
 export default function Home({ caminhoes }) {
   return (
@@ -34,7 +35,8 @@ export default function Home({ caminhoes }) {
             bgColor="#FF3A2C"
             color="#fff"
             _hover={{ boxShadow: '0px 0px 19px -9px #000000' }}
-            z-index="0"
+            position="relative"
+            className="button"
           >
             <Link href="/estoque">Ver Estoque</Link>
           </Button>
@@ -68,6 +70,8 @@ export default function Home({ caminhoes }) {
               preco={caminhao.preco}
               km={caminhao.km}
               ano={caminhao.ano}
+              estoque={false}
+              id={caminhao.id}
             />
           </GridItem>
         ))}
@@ -88,7 +92,7 @@ export default function Home({ caminhoes }) {
           <GridItem fontSize="0.97m" colSpan={['2', '2', '1']} mb="2">
             <p>
               Somos uma empresa de venda e compra de caminhoes, localizada em
-              Cerro largo, RS,
+              Cerro largo, RS
             </p>{' '}
             <br />
             <p>
@@ -119,7 +123,7 @@ export default function Home({ caminhoes }) {
         w="100%"
         maxWidth="1180px"
         px={3}
-        pb={5}
+        pb={12}
       >
         <Heading margin="0 auto" align="center" my={3}>
           Contato
@@ -133,7 +137,7 @@ export default function Home({ caminhoes }) {
             h="68px"
             borderRadius="600px"
           >
-            <EmailIcon w={7} h={7} m="auto" />
+            <EmailIcon w={7} h={7} />
           </Box>
           <Flex margin="auto 0" ml="2">
             jsbecker@gpsnet.com
@@ -174,6 +178,7 @@ export default function Home({ caminhoes }) {
           </Flex>
         </Flex>
       </Box>
+      <Footer />
     </>
   );
 }
