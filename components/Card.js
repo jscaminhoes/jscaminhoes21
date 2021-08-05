@@ -1,6 +1,7 @@
 /* eslint-disable eqeqeq */
 /* eslint-disable react/destructuring-assignment */
 import { Box, Button, Heading, Img, Flex } from '@chakra-ui/react';
+import { FaWhatsapp } from 'react-icons/fa';
 
 export default function Card(caminhao) {
   const urlWhatsapp = `https://api.whatsapp.com/send?phone=5555997166005&text=ola%20estou%20interresado%20no%20caminhão%20${caminhao.titulo.replace(
@@ -8,7 +9,7 @@ export default function Card(caminhao) {
     '%20',
   )}`;
   return (
-    <Box
+    <Flex
       borderRadius="xl"
       w={['90%', '100%']}
       borderWidth="2px"
@@ -16,13 +17,15 @@ export default function Card(caminhao) {
       h={caminhao.estoque ? '400px' : '370px'}
       _hover={{ boxShadow: '0px 0px 19px -9px #000000' }}
       margin="0 auto"
+      flexDirection="column"
+      Key={caminhao.key}
     >
-      <Img src={caminhao.capaImagem} w="100%" h="230px" />
-      <Box p={4} my="auto">
+      <Img src={caminhao.capaImagem} w="100%" h="210px" />
+      <Box p={4} mt="0px" mb="auto">
         <Heading fontSize="18px" fontWeight="bold">
           {caminhao.titulo}
         </Heading>
-        <Box mt={2}>
+        <Box mt="2">
           <Box fontWeight="semibold" fontSize="17px">
             R$ {caminhao.preco}
           </Box>
@@ -44,13 +47,16 @@ export default function Card(caminhao) {
               color="#fff"
               mt="auto"
             >
-              Converse por Whatsapp
+              Converse por Whatsapp{' '}
+              <Box ml="2">
+                <FaWhatsapp fontSize="20px" />
+              </Box>
             </Button>
           </Flex>
         </a>
       ) : (
         ''
       )}
-    </Box>
+    </Flex>
   );
 }

@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/iframe-has-title */
 import { Heading } from '@chakra-ui/layout';
-import { Grid, GridItem, Text, Button, Img, Box, Flex } from '@chakra-ui/react';
+import { Grid, GridItem, Text, Img, Box, Flex } from '@chakra-ui/react';
 import Link from 'next/link';
 import { EmailIcon, PhoneIcon } from '@chakra-ui/icons';
 import Navigator from '../components/Navigator';
@@ -30,16 +30,12 @@ export default function Home({ caminhoes }) {
             Somos uma empresa de venda de caminhoes usados, por otimos preços,
             localizada na região noroeste do estado do Rio Grande do Sul.
           </Text>
-          <Button
-            mt="5"
-            bgColor="#FF3A2C"
-            color="#fff"
-            _hover={{ boxShadow: '0px 0px 19px -9px #000000' }}
-            position="relative"
-            className="button"
-          >
-            <Link href="/estoque">Ver Estoque</Link>
-          </Button>
+
+          <span className="button-home">
+            <Link href="/estoque" className="button-home">
+              Ver Estoque
+            </Link>
+          </span>
         </GridItem>
         <GridItem my="auto" mr="0" ml="auto" display={['none', 'flex']}>
           <Img src="/caminhao.png" />

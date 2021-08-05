@@ -5,5 +5,8 @@ const theme = extendTheme({
     heading: 'Montserrat',
     body: 'Montserrat',
   },
+  color_scheme: {
+    red: '#FF3A2C',
+  },
 });
 export default theme;

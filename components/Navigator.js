@@ -16,7 +16,7 @@ export default function Navigator() {
 
   return (
     <>
-      <Box bgColor="#FF3A2C" position="fixed" w="100%">
+      <Box bgColor="#FF3A2C" position="fixed" w="100%" className="nav">
         <Flex
           py={1}
           justifyContent="space-between"

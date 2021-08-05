@@ -2,6 +2,29 @@
   z-index: -1;
 }
 
-.button-whatsapp {
-  margin-bottom: 0px;
+.button-home {
+  user-select: none;
+  position: relative;
+  white-space: nowrap;
+  vertical-align: middle;
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  width: auto;
+  background-color: #ff3a2c;
+  color: #fff;
+  font-weight: 600;
+  line-height: 1.2;
+  min-width: 2.5rem;
+  border-radius: 0.375rem;
+  padding-inline-start: 1rem;
+  padding-inline-end: 1rem;
+  margin-top: 1.25rem;
+  height: 2.5rem;
+  display: inline-flex;
+  align-items: center;
+  z-index: 0;
+}
+
+.nav {
+  z-index: 2;
 }
