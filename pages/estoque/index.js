@@ -27,6 +27,7 @@ export default function estoque({ caminhoes }) {
   const [filter, setFilter] = useState();
   const [results, setResults] = useState(caminhoes);
   const { valueInput, setValueInput } = useContext(InputValueContext);
+  console.log(useContext(InputValueContext));
 
   // Ordenação
   useEffect(() => {

@@ -34,8 +34,8 @@ const GlobalStyle = ({ children }) => (
 function MyApp({ Component, pageProps }) {
   return (
     <ChakraProvider theme={theme}>
-      <GlobalStyle />
       <InputValeuProvider>
+        <GlobalStyle />
         <Component {...pageProps} />
       </InputValeuProvider>
     </ChakraProvider>
