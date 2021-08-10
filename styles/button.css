@@ -28,3 +28,8 @@
 .nav {
   z-index: 2;
 }
+
+body,
+html {
+  overflow-x: hidden;
+}

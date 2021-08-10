@@ -8,11 +8,16 @@ import {
   MenuButton,
   MenuList,
   MenuItem,
+  Button,
 } from '@chakra-ui/react';
 import Link from 'next/link';
+import { useState } from 'react';
+import { useRouter } from 'next/router';
 
 export default function Navigator() {
   // #CC2E23, #FF3A2C,  #C42521 opções de cor
+  const [valueInput, setValueInput] = useState();
+  const router = useRouter();
 
   return (
     <>
@@ -30,7 +35,14 @@ export default function Navigator() {
         >
           <img src="/favicon.ico" alt="JS caminhões" width="50" height="50" />
           <Stack w="60%">
-            <InputGroup>
+            <InputGroup
+              as="form"
+              onSubmit={() =>
+                router.push({
+                  pathname: `/estoque/?s=${valueInput.replace('', '%20')}`,
+                })
+              }
+            >
               <Input
                 type="text"
                 width="100%"
@@ -39,18 +51,25 @@ export default function Navigator() {
                 focusBorderColor="#fff"
                 errorBorderColor="red"
                 bgColor="#fff"
+                value={valueInput}
+                onChange={(e) => setValueInput(e.target.value)}
               />
-              <InputRightAddon mr="0" bgColor="#fff">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  height="24px"
-                  viewBox="0 0 24 24"
-                  width="24px"
-                  fill="#000000"
-                >
-                  <path d="M0 0h24v24H0V0z" fill="none" />
-                  <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" />
-                </svg>
+              <InputRightAddon mr="0" bgColor="#fff" margin="0" padding="0">
+                <Button type="submit" bgColor="#fff" margin="0">
+                  {' '}
+                  <Link href={`/estoque/?s=${valueInput}`}>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      height="24px"
+                      viewBox="0 0 24 24"
+                      width="24px"
+                      fill="#000000"
+                    >
+                      <path d="M0 0h24v24H0V0z" fill="none" />
+                      <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" />
+                    </svg>
+                  </Link>
+                </Button>
               </InputRightAddon>
             </InputGroup>
           </Stack>

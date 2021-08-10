@@ -7,6 +7,7 @@ import '@fontsource/montserrat/500.css';
 import '@fontsource/montserrat/600.css';
 import '@fontsource/montserrat/700.css';
 import '../styles/button.css';
+import { InputValeuProvider } from '../context/InputValueContext';
 
 const GlobalStyle = ({ children }) => (
   <>
@@ -34,7 +35,9 @@ function MyApp({ Component, pageProps }) {
   return (
     <ChakraProvider theme={theme}>
       <GlobalStyle />
-      <Component {...pageProps} />
+      <InputValeuProvider>
+        <Component {...pageProps} />
+      </InputValeuProvider>
     </ChakraProvider>
   );
 }

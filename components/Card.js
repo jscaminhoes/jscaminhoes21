@@ -16,9 +16,9 @@ export default function Card(caminhao) {
       overflow="hidden"
       h={caminhao.estoque ? '400px' : '370px'}
       _hover={{ boxShadow: '0px 0px 19px -9px #000000' }}
-      margin="0 auto"
       flexDirection="column"
-      Key={caminhao.key}
+      key={caminhao.key}
+      maxWidth="350px"
     >
       <Img src={caminhao.capaImagem} w="100%" h="210px" />
       <Box p={4} mt="0px" mb="auto">
