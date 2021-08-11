@@ -30,14 +30,7 @@ import Card from '../components/Card';
 import Footer from '../components/Footer';
 import InputValueContext from '../context/InputValueContext';
 
-export default function Home() {
-  async function getCaminhoes() {
-    const caminhoes = await getAllCaminhoes();
-    return caminhoes;
-  }
-  const caminhoes = getCaminhoes();
-  console.log(caminhoes);
-
+export default function Home({ caminhoes }) {
   const { valueInput, setValueInput } = useContext(InputValueContext);
   return (
     <>
@@ -189,7 +182,7 @@ export default function Home() {
         maxWidth="1180px"
         px={3}
       >
-        {/* {caminhoes.slice(0, 4).map((caminhao) => (
+        {caminhoes.slice(0, 4).map((caminhao) => (
           <GridItem>
             <Card
               capaImagem={caminhao.capaImagem.url}
@@ -201,7 +194,7 @@ export default function Home() {
               id={caminhao.id}
             />
           </GridItem>
-        ))} */}
+        ))}
       </Grid>
       <Box color="#fff" bgColor="#FF3A2C" mt={6} as="section" id="sobre">
         <Heading mt="4" width="100%" align="center" mb="1">
@@ -312,7 +305,7 @@ export default function Home() {
 
 export async function getStaticProps() {
   const caminhoes = await getAllCaminhoes();
-  console.log(caminhoes);
+
   return {
     props: {
       caminhoes,
