@@ -1,7 +1,7 @@
-.button {
-  z-index: -1;
+/* Corrigindo bugs */
+button {
+  z-index: 1;
 }
-
 .button-home {
   user-select: none;
   position: relative;
@@ -24,12 +24,23 @@
   align-items: center;
   z-index: 0;
 }
-
 .nav {
   z-index: 2;
 }
 
-body,
-html {
-  overflow-x: hidden;
+/* Criando slider */
+.imagem-slider {
+  object-fit: cover;
+  vertical-align: middle;
+}
+
+.items {
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+}
+
+.item {
+  flex: none;
+  scroll-snap-align: start;
+  pointer-events: none;
 }

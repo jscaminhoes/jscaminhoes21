@@ -22,7 +22,7 @@ export default function Footer() {
           <GridItem mr="4">
             <UnorderedList styleType="none" textDecoration="underline" mt="0">
               <ListItem mb="2.5">
-                <Link href="/estoque">Ver Estoque</Link>
+                <Link href="/estoque">Estoque</Link>
               </ListItem>
               <ListItem mb="2.5">
                 <Link href="/#sobre">Sobre</Link>

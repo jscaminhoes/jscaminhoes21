@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-expressions */
 /* eslint-disable default-case */
 import {
   Grid,
@@ -17,23 +18,41 @@ import { useContext, useEffect, useState } from 'react';
 
 import { Stack, Heading } from '@chakra-ui/layout';
 import Link from 'next/link';
+import Fuse from 'fuse.js';
+
 import InputValueContext from '../../context/InputValueContext';
-import { getAllCaminhoes } from '../../lib/dato-cms';
+import { getAllCaminhoes } from '../../api/getAllcaminhoes';
 import Card from '../../components/Card';
 import Footer from '../../components/Footer';
 
 export default function estoque({ caminhoes }) {
-  const [data, setData] = useState(caminhoes);
-  const [filter, setFilter] = useState();
-  const [results, setResults] = useState(caminhoes);
-  const { valueInput, setValueInput } = useContext(InputValueContext);
+  const [orderType, setOrderType] = useState('NoOrder');
 
-  // Ordenação
-  useEffect(() => {
-    switch (filter) {
+  // padronizar o formato dos dados
+  function handleFormatData(dados) {
+    if (dados.every((objeto) => objeto.item !== undefined)) {
+      const newFormat = [];
+      // eslint-disable-next-line no-param-reassign
+      dados.map((caminhao) => newFormat.push(caminhao.item));
+      return newFormat;
+    }
+    return dados;
+  }
+
+  const fuse = new Fuse(caminhoes, {
+    keys: ['titulo', 'descricao'],
+  });
+  const { valueInput, setValueInput } = useContext(InputValueContext);
+  const [data, setData] = useState(
+    valueInput === '' ? caminhoes : handleFormatData(fuse.search(valueInput)),
+  );
+
+  // Ordenar os Dados
+  function handleOrderData(dados = data) {
+    switch (orderType) {
       case '+P': {
         setData(
-          [...data].sort((a, b) => {
+          [...dados].sort((a, b) => {
             const c = a.preco < b.preco ? 1 : -1;
             return c;
           }),
@@ -42,7 +61,7 @@ export default function estoque({ caminhoes }) {
       }
       case '-P': {
         setData(
-          [...data].sort((a, b) => {
+          [...dados].sort((a, b) => {
             const c = a.preco > b.preco ? 1 : -1;
             return c;
           }),
@@ -51,7 +70,7 @@ export default function estoque({ caminhoes }) {
       }
       case '+A': {
         setData(
-          [...data].sort((a, b) => {
+          [...dados].sort((a, b) => {
             const c = a.ano < b.ano ? 1 : -1;
             return c;
           }),
@@ -60,74 +79,22 @@ export default function estoque({ caminhoes }) {
       }
       case '-A': {
         setData(
-          [...data].sort((a, b) => {
+          [...dados].sort((a, b) => {
             const c = a.ano > b.ano ? 1 : -1;
             return c;
           }),
         );
         break;
       }
-    }
-  }, [filter]);
-
-  // pesquisa input
-  useEffect(() => {
-    switch (filter) {
-      case '+P': {
-        const prePreResults = [...results].sort((a, b) => {
-          const c = a.preco < b.preco ? 1 : -1;
-          return c;
-        });
-        const preResult = [];
-        prePreResults.map((caminhao) => preResult.push(caminhao.item));
-        setData(preResult);
-
-        break;
-      }
-      case '-P': {
-        const prePreResults = [...results].sort((a, b) => {
-          const c = a.preco > b.preco ? 1 : -1;
-          return c;
-        });
-        const preResult = [];
-        prePreResults.map((caminhao) => preResult.push(caminhao.item));
-        setData(preResult);
-
-        break;
-      }
-      case '+A': {
-        const prePreResults = [...results].sort((a, b) => {
-          const c = a.ano < b.ano ? 1 : -1;
-          return c;
-        });
-        const preResult = [];
-        prePreResults.map((caminhao) => preResult.push(caminhao.item));
-        setData(preResult);
-        break;
-      }
-      case '-A': {
-        const prePreResults = [...results].sort((a, b) => {
-          const c = a.ano > b.ano ? 1 : -1;
-          return c;
-        });
-        const preResult = [];
-        prePreResults.map((caminhao) => preResult.push(caminhao.item));
-        setData(preResult);
-        break;
-      }
-      default: {
-        if (caminhoes === results) {
-          setData(results);
-        } else {
-          const preResult = [];
-          results.map((caminhao) => preResult.push(caminhao.item));
-          setData(preResult);
-        }
-
+      case 'NoOrder': {
+        setData(dados);
         break;
       }
     }
-  }, [results]);
+  }
+
+  // Obserar mudança do tipo de ordenação
+  useEffect(handleOrderData, [orderType]);
 
   return (
     <>
@@ -159,16 +126,9 @@ export default function estoque({ caminhoes }) {
                 onChange={async (e) => {
                   const { value } = e.currentTarget;
                   setValueInput(value);
-                  // Dynamically load fuse.js
-                  const Fuse = (await import('fuse.js')).default;
-                  const fuse = new Fuse(caminhoes, {
-                    keys: ['titulo', 'descricao'],
-                  });
-                  console.log('tá dando mt merda');
-                  // eslint-disable-next-line no-unused-expressions
                   value === ''
                     ? setData(caminhoes)
-                    : setResults(fuse.search(value));
+                    : handleOrderData(handleFormatData(fuse.search(value)));
                 }}
               />
               <InputRightAddon mr="0" bgColor="#fff">
@@ -256,66 +216,21 @@ export default function estoque({ caminhoes }) {
                 Ordenar Por <ChevronDownIcon />{' '}
               </MenuButton>
               <MenuList>
-                <MenuItem onClick={() => setFilter('+P')}>Maior preço</MenuItem>
-                <MenuItem onClick={() => setFilter('-P')}>Menor preço</MenuItem>
-                <MenuItem onClick={() => setFilter('+A')}>
+                <MenuItem onClick={() => setOrderType('+P')}>
+                  Maior preço
+                </MenuItem>
+                <MenuItem onClick={() => setOrderType('-P')}>
+                  Menor preço
+                </MenuItem>
+                <MenuItem onClick={() => setOrderType('+A')}>
                   Maior ano modelo
                 </MenuItem>
-                <MenuItem onClick={() => setFilter('-A')}>
+                <MenuItem onClick={() => setOrderType('-A')}>
                   Menor ano modelo
                 </MenuItem>
               </MenuList>
             </Menu>
           </Box>
-          {/* <Box>
-            <Button
-              onClick={onOpen}
-              variant="outline"
-              fontWeight="400"
-              z-index="-1"
-            >
-              Filtrar <FaFilter />
-            </Button>
-
-            <Modal isOpen={isOpen} onClose={onClose}>
-              <ModalOverlay />
-              <ModalContent>
-                <ModalHeader>Defina seu filtro</ModalHeader>
-                <ModalCloseButton />
-                <ModalBody pb={6}>
-                  <FormLabel>Defina o ano minimo</FormLabel>
-                  <NumberInput max={maxAnos} min={minAnos}>
-                    <NumberInputField />
-                    <NumberInputStepper>
-                      <NumberIncrementStepper />
-                      <NumberDecrementStepper />
-                    </NumberInputStepper>
-                  </NumberInput>
-
-                  <FormLabel mt="2">Defina o ano maximo</FormLabel>
-                  <NumberInput max={maxAnos} min={minAnos}>
-                    <NumberInputField />
-                    <NumberInputStepper>
-                      <NumberIncrementStepper />
-                      <NumberDecrementStepper />
-                    </NumberInputStepper>
-                  </NumberInput>
-                </ModalBody>
-
-                <ModalFooter>
-                  <Button
-                    colorScheme="red"
-                    bgColor="#FF3A2C"
-                    mr={3}
-                    onClick={onClose}
-                  >
-                    Salvar
-                  </Button>
-                  <Button onClick={onClose}>Cancelar</Button>
-                </ModalFooter>
-              </ModalContent>
-            </Modal>
-          </Box> */}
         </Flex>
 
         <Box>
@@ -337,8 +252,8 @@ export default function estoque({ caminhoes }) {
                   preco={caminhao.preco}
                   km={caminhao.km}
                   ano={caminhao.ano}
-                  key={caminhao.id}
-                  estoque="true"
+                  estoque
+                  id={caminhao.id}
                 />
               </GridItem>
             ))}
@@ -366,28 +281,3 @@ export async function getStaticProps() {
     revalidate: 180,
   };
 }
-
-// "Button,
-// Modal,
-// ModalContent,
-// ModalHeader,
-// ModalOverlay,
-// ModalCloseButton,
-// ModalFooter,
-// ModalBody,
-// useDisclosure,
-// NumberInput,
-// NumberDecrementStepper,
-// NumberIncrementStepper,
-// NumberInputField,
-// NumberInputStepper,
-// FormLabel,
-// const { isOpen, onOpen, onClose } = useDisclosure();
-
-// define os anos usados do filtar
-// const anos = [];
-// data.forEach((caminhao) => {
-//   anos.push(caminhao.ano);
-// });
-// const minAnos = Math.min(...anos);
-// const maxAnos = Math.max(...anos);
