@@ -20,11 +20,10 @@ import {
   Td,
   Th,
   Text,
-  Img,
 } from '@chakra-ui/react';
 import { FaWhatsapp, FaEnvelope } from 'react-icons/fa';
 import { Form } from '@unform/web';
-import { PhoneIcon } from '@chakra-ui/icons';
+
 import getCaminhao from '../../api/getCaminhao';
 import getAllcaminhoes from '../../api/getAllCaminhoes';
 import Navigator from '../../components/Navigator';
@@ -77,7 +76,7 @@ export default function CaminhaoPage({ caminhao }) {
         }),
       );
   }
-  console.log(caminhao);
+
   return (
     <>
       <Navigator />
