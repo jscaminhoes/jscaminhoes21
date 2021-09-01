@@ -23,6 +23,7 @@ import {
 } from '@chakra-ui/react';
 import { FaWhatsapp, FaEnvelope } from 'react-icons/fa';
 import { Form } from '@unform/web';
+import Head from 'next/head';
 import getCaminhao from '../../api/getCaminhao';
 import getAllcaminhoes from '../../api/getAllcaminhoes';
 import Navigator from '../../components/Navigator';
@@ -81,6 +82,9 @@ export default function CaminhaoPage({ caminhao }) {
 
   return (
     <>
+      <Head>
+        <title>{caminhao.titulo}</title>
+      </Head>
       <Navigator />
       <Box m="0 auto" w="100%" maxWidth="1180px" px={3} mt="86px">
         <Grid templateRows="1fr" templateColumns="repeat(10, 1fr)" gap="3">

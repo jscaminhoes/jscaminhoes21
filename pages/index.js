@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { EmailIcon, PhoneIcon } from '@chakra-ui/icons';
 import { Heading } from '@chakra-ui/layout';
 import { Grid, GridItem, Text, Img, Box, Flex } from '@chakra-ui/react';
+import Head from 'next/head';
 import { getAllCaminhoes } from '../api/getAllcaminhoes';
 import Card from '../components/Card';
 import Footer from '../components/Footer';
@@ -12,6 +13,9 @@ import Navigator from '../components/Navigator';
 export default function Home({ caminhoes }) {
   return (
     <>
+      <Head>
+        <title>Home - JS caminhôes</title>
+      </Head>
       <Navigator />
       <Grid
         templateRows="1fr"
@@ -42,37 +46,44 @@ export default function Home({ caminhoes }) {
           <Img src="/caminhao.png" />
         </GridItem>
       </Grid>
-      <Heading margin="0 auto" my={4} align={['start', 'center']}>
-        Recentes
-      </Heading>
-      <Grid
-        templateColumns={[
-          '1fr',
-          'repeat(2, 1fr)',
-          'repeat(3, 1fr)',
-          'repeat(4, 1fr)',
-        ]}
-        templateRows="1fr"
-        gap="2"
-        m="0 auto"
-        w="100%"
-        maxWidth="1180px"
-        px={3}
-      >
-        {caminhoes.slice(0, 4).map((caminhao) => (
-          <GridItem>
-            <Card
-              capaImagem={caminhao.capaImagem.url}
-              titulo={caminhao.titulo}
-              preco={caminhao.preco}
-              km={caminhao.km}
-              ano={caminhao.ano}
-              estoque={false}
-              id={caminhao.id}
-            />
-          </GridItem>
-        ))}
-      </Grid>
+      {caminhoes.length !== 0 && (
+        <>
+          <Heading margin="0 auto" my={4} align={['start', 'center']}>
+            Recentes
+          </Heading>
+          <Grid
+            templateColumns={[
+              '1fr',
+              'repeat(2, 1fr)',
+              'repeat(3, 1fr)',
+              'repeat(4, 1fr)',
+            ]}
+            templateRows="1fr"
+            gap="2"
+            m="0 auto"
+            w="100%"
+            maxWidth="1180px"
+            px={3}
+          >
+            {caminhoes.slice(0, 4).map((caminhao) => (
+              <GridItem>
+                <Card
+                  capaImagem={caminhao.imagens
+                    .slice(0)
+                    .map((imagem) => imagem.url)}
+                  titulo={caminhao.titulo}
+                  preco={caminhao.preco}
+                  km={caminhao.km}
+                  ano={caminhao.ano}
+                  estoque={false}
+                  id={caminhao.id}
+                />
+              </GridItem>
+            ))}
+          </Grid>
+        </>
+      )}
+
       <Box color="#fff" bgColor="#FF3A2C" mt={6} as="section" id="sobre">
         <Heading mt="4" width="100%" align="center" mb="1">
           Sobre

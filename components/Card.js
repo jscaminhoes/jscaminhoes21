@@ -1,6 +1,6 @@
 /* eslint-disable eqeqeq */
 /* eslint-disable react/destructuring-assignment */
-import { Box, Button, Heading, Img, Flex } from '@chakra-ui/react';
+import { Box, Button, Heading, Flex, Img } from '@chakra-ui/react';
 import { FaWhatsapp } from 'react-icons/fa';
 import Link from 'next/link';
 
@@ -29,7 +29,7 @@ export default function Card(caminhao) {
       <Box h="380px">
         <Link href={`/estoque/${caminhao.id}`}>
           <a>
-            <Img src={caminhao.capaImagem} w="100%" h="210px" />
+            <Img src={caminhao.capaImagem.toString()} w="100%" h="210px" />
             <Box p={4} mt="0px" mb="auto">
               <Heading fontSize="18px" fontWeight="bold" h="45px">
                 {caminhao.titulo}

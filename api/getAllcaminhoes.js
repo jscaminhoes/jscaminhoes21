@@ -6,7 +6,7 @@ export async function getAllCaminhoes() {
       allCaminhoes {
         id
         titulo      
-        capaImagem {
+        imagens {
           url(imgixParams: {fm: jpg, fit: crop, w: 300, h: 220})
         }        
         preco

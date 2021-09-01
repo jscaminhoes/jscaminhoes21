@@ -1,3 +1,4 @@
+/* eslint-disable import/no-named-as-default */
 /* eslint-disable no-unused-expressions */
 /* eslint-disable default-case */
 import {
@@ -15,11 +16,10 @@ import {
 } from '@chakra-ui/react';
 import { ChevronDownIcon, HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
 import { useContext, useEffect, useState } from 'react';
-
 import { Stack, Heading } from '@chakra-ui/layout';
 import Link from 'next/link';
 import Fuse from 'fuse.js';
-
+import Head from 'next/head';
 import InputValueContext from '../../context/InputValueContext';
 import getAllCaminhoes from '../../api/getAllcaminhoes';
 import Card from '../../components/Card';
@@ -95,10 +95,12 @@ export default function estoque({ caminhoes }) {
 
   // Obserar mudança do tipo de ordenação
   useEffect(handleOrderData, [orderType]);
-  console.log(caminhoes);
+
   return (
     <>
-      {' '}
+      <Head>
+        <title>Estoque - JS caminhões</title>
+      </Head>
       <Box bgColor="#FF3A2C" position="fixed" w="100%" className="nav">
         <Flex
           py={1}
@@ -247,7 +249,9 @@ export default function estoque({ caminhoes }) {
             {data.map((caminhao) => (
               <GridItem>
                 <Card
-                  capaImagem={caminhao.capaImagem.url}
+                  capaImagem={caminhao.imagens
+                    .slice(0, 1)
+                    .map((imagem) => imagem.url)}
                   titulo={caminhao.titulo}
                   preco={caminhao.preco}
                   km={caminhao.km}
