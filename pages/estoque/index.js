@@ -21,7 +21,7 @@ import Link from 'next/link';
 import Fuse from 'fuse.js';
 
 import InputValueContext from '../../context/InputValueContext';
-import { getAllCaminhoes } from '../../api/getAllcaminhoes';
+import getAllCaminhoes from '../../api/getAllcaminhoes';
 import Card from '../../components/Card';
 import Footer from '../../components/Footer';
 

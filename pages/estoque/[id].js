@@ -24,7 +24,7 @@ import {
 import { FaWhatsapp, FaEnvelope } from 'react-icons/fa';
 import { Form } from '@unform/web';
 import getCaminhao from '../../api/getCaminhao';
-import getAllcaminhoes from '../../api/getAllCaminhoes';
+import getAllcaminhoes from '../../api/getAllcaminhoes';
 import Navigator from '../../components/Navigator';
 import Slider from '../../components/Slider';
 import InputMail from '../../components/InputMail';
