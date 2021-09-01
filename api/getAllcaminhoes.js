@@ -2,7 +2,6 @@ import fetchCmsAPI from '../lib/dato-cms';
 
 export async function getAllCaminhoes() {
   const data = await fetchCmsAPI(`
-      
     {
       allCaminhoes {
         id
@@ -15,7 +14,6 @@ export async function getAllCaminhoes() {
         ano
       }
     }
-    
   `);
 
   return data.allCaminhoes;

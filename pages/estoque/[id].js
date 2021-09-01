@@ -23,7 +23,6 @@ import {
 } from '@chakra-ui/react';
 import { FaWhatsapp, FaEnvelope } from 'react-icons/fa';
 import { Form } from '@unform/web';
-
 import getCaminhao from '../../api/getCaminhao';
 import getAllcaminhoes from '../../api/getAllCaminhoes';
 import Navigator from '../../components/Navigator';
@@ -31,6 +30,7 @@ import Slider from '../../components/Slider';
 import InputMail from '../../components/InputMail';
 import TextAreaMail from '../../components/TextAreaMail';
 import Footer from '../../components/Footer';
+import Error404 from '../../components/Erro404';
 
 export default function CaminhaoPage({ caminhao }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -42,7 +42,6 @@ export default function CaminhaoPage({ caminhao }) {
     }`;
     return numberFomatted;
   }
-  const urlWhatsapp = `https://api.whatsapp.com/send?phone=5555997166005&text=Olá%20estou%20interresado%20no%20caminhão%20jscaminhoes.com/estoque/${caminhao.id}`;
 
   function sendMail(titulo, cliente, contato, mensagem, caminhaoId) {
     fetch('/api/SendMail', {
@@ -76,6 +75,9 @@ export default function CaminhaoPage({ caminhao }) {
         }),
       );
   }
+  if (!caminhao) {
+    return <Error404 />;
+  }
 
   return (
     <>
@@ -97,7 +99,9 @@ export default function CaminhaoPage({ caminhao }) {
             <Flex mt="5" w="100%">
               <Box w="50%" mr="2">
                 {' '}
-                <a href={urlWhatsapp}>
+                <a
+                  href={`https://api.whatsapp.com/send?phone=5555997166005&text=Olá%20estou%20interresado%20no%20caminhão%20jscaminhoes.com/estoque/${caminhao.id}`}
+                >
                   <Flex flexDir="column">
                     <Button
                       w="100%"
@@ -105,7 +109,10 @@ export default function CaminhaoPage({ caminhao }) {
                       color="#fff"
                       mt="auto"
                       bgColor="#1bd742"
-                      _hover={{ backgroundColor: '#1bd742', boxShadow: '2xl' }}
+                      _hover={{
+                        backgroundColor: '#1bd742',
+                        boxShadow: '2xl',
+                      }}
                       p="3"
                     >
                       Whatsapp{' '}
@@ -247,7 +254,7 @@ export default function CaminhaoPage({ caminhao }) {
 
 export async function getStaticProps({ params }) {
   const { caminhoe } = await getCaminhao(params.id);
-  if (caminhoe.id === undefined) {
+  if (caminhoe === undefined) {
     return { notFound: true };
   }
   return { props: { caminhao: caminhoe }, revalidate: 180 };
@@ -255,7 +262,9 @@ export async function getStaticProps({ params }) {
 
 export async function getStaticPaths() {
   const caminhoes = await getAllcaminhoes();
-
-  const paths = caminhoes.map((caminhao) => ({ params: { id: caminhao.id } }));
+  console.log(caminhoes);
+  const paths = caminhoes.map(
+    (caminhao) => caminhao && { params: { id: caminhao.id } },
+  );
   return { paths, fallback: true };
 }

@@ -95,7 +95,7 @@ export default function estoque({ caminhoes }) {
 
   // Obserar mudança do tipo de ordenação
   useEffect(handleOrderData, [orderType]);
-
+  console.log(caminhoes);
   return (
     <>
       {' '}
