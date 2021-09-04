@@ -162,7 +162,7 @@ export default function estoque({ caminhoes }) {
             fontSize={['sm', 'sm', '1.05rem']}
             display={['none', 'none', 'none', 'flex']}
           >
-            <Box ml={2}>
+            <Box>
               {' '}
               <Link href="/">Home</Link>
             </Box>
@@ -174,7 +174,7 @@ export default function estoque({ caminhoes }) {
               {' '}
               <Link href="/#contato">Contato</Link>
             </Box>
-            <Box>
+            <Box ml={2}>
               {' '}
               <Link href="/#sobre">Sobre</Link>
             </Box>

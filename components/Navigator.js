@@ -86,7 +86,7 @@ export default function Navigator() {
           fontSize={['sm', 'sm', '1.05rem']}
           display={['none', 'none', 'none', 'flex']}
         >
-          <Box ml={2}>
+          <Box>
             {' '}
             <Link href="/">Home</Link>
           </Box>
@@ -98,7 +98,7 @@ export default function Navigator() {
             {' '}
             <Link href="/#sobre">Sobre</Link>
           </Box>
-          <Box>
+          <Box ml={2}>
             {' '}
             <Link href="/#contato">Contato</Link>
           </Box>
