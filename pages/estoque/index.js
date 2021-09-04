@@ -164,19 +164,27 @@ export default function estoque({ caminhoes }) {
           >
             <Box>
               {' '}
-              <Link href="/">Home</Link>
+              <Link href="/">
+                <a>Home</a>
+              </Link>
             </Box>
             <Box mx="2">
               {' '}
-              <Link href="/estoque">Estoque</Link>
+              <Link href="/estoque">
+                <a>Estoque</a>
+              </Link>
             </Box>
             <Box>
               {' '}
-              <Link href="/#contato">Contato</Link>
+              <Link href="/#contato">
+                <a>Contato</a>
+              </Link>
             </Box>
             <Box ml={2}>
               {' '}
-              <Link href="/#sobre">Sobre</Link>
+              <Link href="/#sobre">
+                <a>Sobre</a>
+              </Link>
             </Box>
           </Flex>
           <Flex display={['flex', 'flex', 'flex', 'none']}>
@@ -194,17 +202,25 @@ export default function estoque({ caminhoes }) {
                   </MenuButton>
                   <MenuList>
                     <MenuItem>
-                      <Link href="/">Home</Link>
+                      <Link href="/">
+                        <a>Home</a>
+                      </Link>
                     </MenuItem>
                     <MenuItem>
-                      <Link href="/estoque">Estoque</Link>
+                      <Link href="/estoque">
+                        <a>Estoque</a>
+                      </Link>
                     </MenuItem>
                     <MenuItem>
                       {' '}
-                      <Link href="/#sobre">Sobre</Link>
+                      <Link href="/#sobre">
+                        <a>Sobre</a>
+                      </Link>
                     </MenuItem>
                     <MenuItem>
-                      <Link href="/#contato">Contato</Link>
+                      <Link href="/#contato">
+                        <a>Contato</a>
+                      </Link>
                     </MenuItem>
                   </MenuList>
                 </>

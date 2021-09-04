@@ -39,7 +39,7 @@ export default function Home({ caminhoes }) {
 
           <span className="button-home">
             <Link href="/estoque" className="button-home">
-              Ver Estoque
+              <a>Ver Estoque</a>
             </Link>
           </span>
         </GridItem>
