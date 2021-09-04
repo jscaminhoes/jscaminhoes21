@@ -14,7 +14,7 @@ export default function Home({ caminhoes }) {
   return (
     <>
       <Head>
-        <title>Home - JS caminhôes</title>
+        <title>Home - Becker caminhôes</title>
       </Head>
       <Navigator />
       <Grid
@@ -48,7 +48,7 @@ export default function Home({ caminhoes }) {
       </Grid>
       {caminhoes.length !== 0 && (
         <>
-          <Heading margin="0 auto" my={4} align={['start', 'center']}>
+          <Heading margin="0 auto" my={4}>
             Recentes
           </Heading>
           <Grid

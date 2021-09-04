@@ -34,9 +34,14 @@ export default function Navigator() {
         h="56px"
         focusBorderColor="#fff"
       >
-        <Text color="#fff" fontWeight="bold">
-          Becker caminhões
-        </Text>
+        <Flex alignItems="center" h="100%" color="#fff" fontWeight="bold">
+          {' '}
+          <Text>Becker</Text>
+          <Text display={['none', 'inline']} ml="1" fontWeight="normal">
+            {' '}
+            caminhões
+          </Text>
+        </Flex>
         <Stack w="60%">
           <InputGroup
             as="form"

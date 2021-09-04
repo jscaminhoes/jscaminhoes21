@@ -100,7 +100,7 @@ export default function estoque({ caminhoes }) {
   return (
     <>
       <Head>
-        <title>Estoque - JS caminhões</title>
+        <title>Estoque - Becker caminhões</title>
       </Head>
       <Box bgColor="#FF3A2C" position="fixed" w="100%" className="nav">
         <Flex
@@ -114,9 +114,15 @@ export default function estoque({ caminhoes }) {
           h="56px"
           focusBorderColor="#fff"
         >
-          <Text color="#fff" fontWeight="bold">
-            Becker caminhões{' '}
-          </Text>
+          <Flex align="center" h="100%" color="#fff" fontWeight="bold">
+            {' '}
+            <Text>Becker</Text>
+            <Text display={['none', 'inline']} ml="1" fontWeight="normal">
+              {' '}
+              caminhões
+            </Text>
+          </Flex>
+
           <Stack w="60%">
             <InputGroup>
               <Input
@@ -197,7 +203,6 @@ export default function estoque({ caminhoes }) {
                       {' '}
                       <Link href="/#sobre">Sobre</Link>
                     </MenuItem>
-
                     <MenuItem>
                       <Link href="/#contato">Contato</Link>
                     </MenuItem>
