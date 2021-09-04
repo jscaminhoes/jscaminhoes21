@@ -81,9 +81,9 @@ export default function Navigator() {
           fontSize={['sm', 'sm', '1.05rem']}
           display={['none', 'none', 'none', 'flex']}
         >
-          <Box>
+          <Box ml={2}>
             {' '}
-            <Link href="/#sobre">Sobre</Link>
+            <Link href="/">Home</Link>
           </Box>
           <Box mx="2">
             {' '}
@@ -91,11 +91,11 @@ export default function Navigator() {
           </Box>
           <Box>
             {' '}
-            <Link href="/#contato">Contato</Link>
+            <Link href="/#sobre">Sobre</Link>
           </Box>
-          <Box ml={2}>
+          <Box>
             {' '}
-            <Link href="/">Home</Link>
+            <Link href="/#contato">Contato</Link>
           </Box>
         </Flex>
         <Flex display={['flex', 'flex', 'flex', 'none']}>
@@ -113,8 +113,7 @@ export default function Navigator() {
                 </MenuButton>
                 <MenuList>
                   <MenuItem>
-                    {' '}
-                    <Link href="/#sobre">Sobre</Link>
+                    <Link href="/">Home</Link>
                   </MenuItem>
                   <MenuItem>
                     <Link href="/estoque">Estoque</Link>
@@ -123,7 +122,8 @@ export default function Navigator() {
                     <Link href="/#contato">Contato</Link>
                   </MenuItem>
                   <MenuItem>
-                    <Link href="/">Home</Link>
+                    {' '}
+                    <Link href="/#sobre">Sobre</Link>
                   </MenuItem>
                 </MenuList>
               </>
