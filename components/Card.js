@@ -5,7 +5,7 @@ import { FaWhatsapp } from 'react-icons/fa';
 import Link from 'next/link';
 
 export default function Card(caminhao) {
-  const urlWhatsapp = `https://api.whatsapp.com/send?phone=5555997166005&text=Olá%20estou%20interresado%20no%20caminhão%20jscaminhoes.com/estoque/${caminhao.id}`;
+  const urlWhatsapp = `https://api.whatsapp.com/send?phone=5555997166005&text=Olá%20estou%20interresado%20no%20caminhão%20beckercaminhoes.com.br/estoque/${caminhao.id}`;
 
   function NumberFormatter(n) {
     const numberFomatted = `${Math.floor(n / 1000)}.${

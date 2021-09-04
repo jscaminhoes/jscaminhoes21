@@ -11,6 +11,7 @@ import {
   Button,
   Box,
   Flex,
+  Text,
 } from '@chakra-ui/react';
 import Link from 'next/link';
 import { Stack } from '@chakra-ui/layout';
@@ -33,7 +34,9 @@ export default function Navigator() {
         h="56px"
         focusBorderColor="#fff"
       >
-        <img src="/favicon.ico" alt="JS caminhões" width="50" height="50" />
+        <Text color="#fff" fontWeight="bold">
+          Becker caminhões
+        </Text>
         <Stack w="60%">
           <InputGroup
             as="form"
@@ -73,7 +76,6 @@ export default function Navigator() {
             </InputRightAddon>
           </InputGroup>
         </Stack>
-
         <Flex
           color="white"
           fontSize={['sm', 'sm', '1.05rem']}

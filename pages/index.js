@@ -43,7 +43,7 @@ export default function Home({ caminhoes }) {
           </span>
         </GridItem>
         <GridItem my="auto" mr="0" ml="auto" display={['none', 'flex']}>
-          <Img src="/caminhao.png" />
+          <Img src="/scania.png" />
         </GridItem>
       </Grid>
       {caminhoes.length !== 0 && (
@@ -99,11 +99,12 @@ export default function Home({ caminhoes }) {
         >
           <GridItem fontSize="0.97m" colSpan={['2', '2', '1']} mb="2">
             <p>
-              Somos uma empresa de venda e compra de caminhoes, localizada em
-              Cerro largo, RS
+              Somos uma empresa de compra e venda de caminhões, localizada em
+              Cerro Largo, RS, na região noroeste do estado. Trabalhamos com
+              todos os tipos de caminhões.
             </p>{' '}
             <br />
-            <p>
+            {/* <p>
               {' '}
               Maecenas sit amet libero quis nisl laoreet egestas quis sed enim.
               Suspendisse efficitur molestie dolor ac venenatis. Morbi at tortor
@@ -112,7 +113,7 @@ export default function Home({ caminhoes }) {
               pharetra imperdiet, lectus eros scelerisque massa, sed venenatis
               sem leo eu nisi. Nam gravida sollicitudin tempus. Morbi tincidunt
               elit quis dolor semper dictum.
-            </p>
+            </p> */}
           </GridItem>
           <GridItem mr="0" ml="auto" w="100%" colSpan={['2', '2', '1']}>
             <iframe

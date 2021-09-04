@@ -104,7 +104,7 @@ export default function CaminhaoPage({ caminhao }) {
               <Box w="50%" mr="2">
                 {' '}
                 <a
-                  href={`https://api.whatsapp.com/send?phone=5555997166005&text=Olá%20estou%20interresado%20no%20caminhão%20jscaminhoes.com/estoque/${caminhao.id}`}
+                  href={`https://api.whatsapp.com/send?phone=5555997166005&text=Olá%20estou%20interresado%20no%20caminhão%20beckercaminhoes.com.br/estoque/${caminhao.id}`}
                 >
                   <Flex flexDir="column">
                     <Button

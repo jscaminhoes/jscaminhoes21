@@ -1,5 +1,5 @@
-import Error404 from '../components/Erro404';
 import Head from 'next/head';
+import Error404 from '../components/Erro404';
 
 export default function Custom404() {
   return (

@@ -13,6 +13,7 @@ import {
   Input,
   InputGroup,
   InputRightAddon,
+  Text,
 } from '@chakra-ui/react';
 import { ChevronDownIcon, HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
 import { useContext, useEffect, useState } from 'react';
@@ -113,7 +114,9 @@ export default function estoque({ caminhoes }) {
           h="56px"
           focusBorderColor="#fff"
         >
-          <img src="/favicon.ico" alt="JS caminhões" width="50" height="50" />
+          <Text color="#fff" fontWeight="bold">
+            Becker caminhões{' '}
+          </Text>
           <Stack w="60%">
             <InputGroup>
               <Input

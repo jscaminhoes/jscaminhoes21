@@ -16,8 +16,8 @@ export default function sendMail(req, res) {
         from: 'jscaminhoes <jscaminhoes21@gmail.com>',
         to: 'jscaminhoes21@gmail.com',
         subject: req.body.titulo,
-        text: `${req.body.cliente} | ${req.body.contato} | jscaminhoes.com/estoque/${req.body.caminhaoId} ${req.body.mensagem}`,
-        html: ` <b>${req.body.cliente}</b> | <b>${req.body.contato}</b>  | jscaminhoes.com/estoque/${req.body.caminhaoId} <p>${req.body.mensagem}</p>`,
+        text: `${req.body.cliente} | ${req.body.contato} | jscaminhoes.com.br/estoque/${req.body.caminhaoId} /n ${req.body.mensagem}`,
+        html: ` <b>${req.body.cliente}</b> | <b>${req.body.contato}</b>  | jscaminhoes.com.br/estoque/${req.body.caminhaoId} <p>${req.body.mensagem}</p>`,
       })
       .then(() => {
         res.send('sucesso');
