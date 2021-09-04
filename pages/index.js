@@ -32,8 +32,9 @@ export default function Home({ caminhoes }) {
             Compre seu caminhão usado aqui
           </Heading>
           <Text fontSize="sm" line-height="2rem">
-            Somos uma empresa de venda de caminhoes usados, por otimos preços,
-            localizada na região noroeste do estado do Rio Grande do Sul.
+            Somos uma empresa de compra e venda de caminhôes usados, por otímos
+            preços, localizada na região noroeste do estado do Rio Grande do
+            Sul.
           </Text>
 
           <span className="button-home">
