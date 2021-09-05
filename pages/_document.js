@@ -17,6 +17,10 @@ class MyDocument extends Document {
             href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap"
             rel="stylesheet"
           />
+          <meta
+            name="google-site-verification"
+            content="yqft_OMRVorkgF8rjosTy7pZPeoBPyI2X34nuyBQb6E"
+          />
         </Head>
         <body>
           <Main />
