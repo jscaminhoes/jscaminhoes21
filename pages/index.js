@@ -14,7 +14,7 @@ export default function Home({ caminhoes }) {
   return (
     <>
       <Head>
-        <title>Home - Becker caminhôes</title>
+        <title>Becker caminhões</title>
       </Head>
       <Navigator />
       <Grid

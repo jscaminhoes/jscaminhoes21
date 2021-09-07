@@ -21,6 +21,7 @@ class MyDocument extends Document {
             name="google-site-verification"
             content="yqft_OMRVorkgF8rjosTy7pZPeoBPyI2X34nuyBQb6E"
           />
+          <link rel="icon" type="image/png" href="/favicon.png" />
         </Head>
         <body>
           <Main />
