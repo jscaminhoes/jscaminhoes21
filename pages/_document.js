@@ -22,6 +22,16 @@ class MyDocument extends Document {
             content="yqft_OMRVorkgF8rjosTy7pZPeoBPyI2X34nuyBQb6E"
           />
           <link rel="icon" type="image/png" href="/favicon.png" />
+          <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-210274657-1">
+</script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-210274657-1');
+</script>
         </Head>
         <body>
           <Main />
