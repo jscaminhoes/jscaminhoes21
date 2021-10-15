@@ -12,7 +12,7 @@ class MyDocument extends Document {
         <Head>
           <meta charset="IE-edge" httpEquiv="X-UA-Compatible" />
           <link rel="preconnect" href="https://fonts.googleapis.com" />
-          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin />
           <link
             href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap"
             rel="stylesheet"
@@ -22,7 +22,13 @@ class MyDocument extends Document {
             content="yqft_OMRVorkgF8rjosTy7pZPeoBPyI2X34nuyBQb6E"
           />
           <link rel="icon" type="image/png" href="/favicon.png" />
-          <!-- Global site tag (gtag.js) - Google Analytics -->
+
+          <script
+            async
+            src="https://www.googletagmanager.com/gtag/js?id=UA-210274657-1"
+          />
+          <script>
+         
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-210274657-1">
 </script>
 <script>
@@ -32,6 +38,7 @@ class MyDocument extends Document {
 
   gtag('config', 'UA-210274657-1');
 </script>
+          </script>
         </Head>
         <body>
           <Main />
