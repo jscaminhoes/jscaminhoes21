@@ -84,6 +84,7 @@ export default function CaminhaoPage({ caminhao }) {
     <>
       <Head>
         <title>{caminhao.titulo}</title>
+        <meta name="description" content={caminhao.descricacao} />
       </Head>
       <Navigator />
       <Box m="0 auto" w="100%" maxWidth="1180px" px={3} mt="86px">

@@ -12,7 +12,9 @@ export default function Error404() {
         <Flex m="auto" flexDir="column">
           {' '}
           <Heading m="auto">Erro 404</Heading>
-          <Text m="auto">Essa Pagina não foi encontrada</Text>
+          <Text my="auto" mx="2">
+            Essa Pagina não foi encontrada
+          </Text>
           <Button colorScheme="red" m="auto">
             <Link href="/">Voltar para a tela inicial</Link>
           </Button>

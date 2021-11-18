@@ -15,6 +15,12 @@ export default function Home({ caminhoes }) {
     <>
       <Head>
         <title>Becker caminhões</title>
+        <meta
+          name="description"
+          content="Somos uma empresa de compra e venda de caminhôes usados, por otímos
+            preços, localizada na região noroeste do estado do Rio Grande do
+            Sul."
+        />
       </Head>
       <Navigator />
       <Grid

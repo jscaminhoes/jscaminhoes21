@@ -97,10 +97,17 @@ export default function estoque({ caminhoes }) {
   // Obserar mudança do tipo de ordenação
   useEffect(handleOrderData, [orderType]);
 
+  // criar descrição
+  const description = [];
+  caminhoes.forEach((caminhao) => {
+    description.push(caminhao.titulo);
+  });
+
   return (
     <>
       <Head>
         <title>Estoque - Becker caminhões</title>
+        <meta name="description" content={description} />
       </Head>
       <Box bgColor="#FF3A2C" position="fixed" w="100%" className="nav">
         <Flex
